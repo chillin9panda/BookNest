@@ -1,4 +1,4 @@
-package chillin9panda.book_nest;
+package chillin9panda.booknest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

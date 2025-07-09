@@ -10,7 +10,7 @@
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <groupId>chillin9panda</groupId>
-  <artifactId>book-nest</artifactId>
+  <artifactId>booknest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>BookNest</name>
   <description>IDK yet</description>

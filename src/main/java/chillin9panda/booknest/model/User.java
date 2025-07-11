@@ -1,15 +1,20 @@
 package chillin9panda.booknest.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-public class Users {
+@Table(name = "user")
+public class User {
   @Id
   private String username;
 
@@ -17,16 +22,20 @@ public class Users {
   private String password;
 
   @Enumerated(EnumType.STRING)
+  @Column(nullable = false)
   private Role role;
 
-  @Column(nullable = false)
+  @Column(name = "profile_picture_path")
+  private String profilePicturePath;
+
+  @Column(name = "joined_date", nullable = false, updatable = false)
   private LocalDate joinedDate;
 
+  @Column(name = "last_login")
   private LocalDateTime lastLogin;
 
-  private boolean isActive;
-
-  private boolean hasSystemAccess;
+  @Embedded
+  private UserProperties userProperties;
 
   public enum Role {
     Admin,
@@ -57,12 +66,21 @@ public class Users {
     this.role = role;
   }
 
+  public String getProfilePicturePath() {
+    return profilePicturePath;
+  }
+
+  public void setProfilePicturePath(String profilePicturePath) {
+    this.profilePicturePath = profilePicturePath;
+  }
+
   public LocalDate getJoinedDate() {
     return joinedDate;
   }
 
-  public void setJoinedDate(LocalDate joinedDate) {
-    this.joinedDate = joinedDate;
+  @PrePersist
+  public void onRegister() {
+    this.joinedDate = LocalDate.now();
   }
 
   public LocalDateTime getLastLogin() {
@@ -73,19 +91,11 @@ public class Users {
     this.lastLogin = lastLogin;
   }
 
-  public boolean isActive() {
-    return isActive;
+  public UserProperties getUserProperties() {
+    return userProperties;
   }
 
-  public void setActive(boolean isActive) {
-    this.isActive = isActive;
-  }
-
-  public boolean isHasSystemAccess() {
-    return hasSystemAccess;
-  }
-
-  public void setHasSystemAccess(boolean hasSystemAccess) {
-    this.hasSystemAccess = hasSystemAccess;
+  public void setUserProperties(UserProperties userProperties) {
+    this.userProperties = userProperties;
   }
 }

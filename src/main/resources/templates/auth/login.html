@@ -5,7 +5,7 @@
 </head>
 
 <body>
-  <form>
+  <form th:action="@{/login}" method="post">
     <input type="text" name="username" placeholder="Enter username" />
     <input type="password" name="password" placeholder="Enter password" />
     <button type="submit">Login</button>

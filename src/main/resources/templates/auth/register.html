@@ -1,35 +1,25 @@
+<!doctype html>
 <html>
-  <head>
-    <title>BookNest | Login</title>
-  </head>
 
-  <body>
-    <div th:if="${message}" th:text="${message}"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookNest | Register</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/auth/css/auth.css}" />
+</head>
 
-    <div th:if="${error}" th:text="${error}"></div>
+<body>
+  <div th:if="${message}" th:text="${message}"></div>
+  <div th:if="${error}" th:text="${error}"></div>
 
-    <div>
-      <form th:action="@{/register}" method="post">
-        <input
-          type="text"
-          name="username"
-          placeholder="Enter username"
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          required
-        />
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm password"
-        />
-        <button type="submit">Register</button>
-      </form>
-      <a th:href="@{/login}">login</a>
-    </div>
-  </body>
+  <form th:action="@{/register}" method="post">
+    <h2>BookNest Register</h2>
+    <input type="text" name="username" placeholder="Enter username" required />
+    <input type="password" name="password" placeholder="Enter password" required />
+    <input type="password" name="confirmPassword" placeholder="Confirm password" required />
+    <button type="submit">Register</button>
+    <a th:href="@{/login}">login</a>
+  </form>
+</body>
+
 </html>

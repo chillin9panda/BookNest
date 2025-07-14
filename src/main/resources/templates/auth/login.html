@@ -1,14 +1,28 @@
+<!doctype html>
 <html>
 
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BookNest | Login</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/auth/css/login.css}" />
 </head>
 
 <body>
   <form th:action="@{/login}" method="post">
+    <h2>BookNest Login</h2>
+
     <input type="text" name="username" placeholder="Enter username" />
     <input type="password" name="password" placeholder="Enter password" />
+
+    <div class="checkbox-wrapper">
+      <input type="checkbox" name="rememberMe" id="rememberMe" />
+      <label for="rememberMe">Remember Me</label>
+    </div>
+
     <button type="submit">Login</button>
+
+    <button type="button">Forgot Password</button>
     <a th:href="@{/register}">register</a>
   </form>
 </body>

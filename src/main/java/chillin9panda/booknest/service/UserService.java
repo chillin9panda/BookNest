@@ -22,6 +22,14 @@ public class UserService {
   }
 
   public CustomResponse registerUser(RegisterUserRequest request) {
+    if (request.getUsername() == null) {
+      throw new IllegalArgumentException("Username required!");
+    }
+
+    if (request.getPassword() == null) {
+      throw new IllegalArgumentException("Password required!");
+    }
+
     if (userRepository.existsByUsername(request.getUsername())) {
       throw new IllegalArgumentException("Username taken!");
     }

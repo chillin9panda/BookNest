@@ -17,7 +17,7 @@ public class SecurityConfig {
     http.authorizeHttpRequests(authz -> authz
         .requestMatchers("/register", "/login", "/user/register")
         .permitAll()
-        .requestMatchers("/auth/**")
+        .requestMatchers("/auth/**", "/favicon.png")
         .permitAll()
         .anyRequest()
         .authenticated())

@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="img/png" th:href="@{/favicon.png}" />
-  <title>BookNest | Home</title>
+  <title>BookNest | Users</title>
   <link th:href="@{/booknest/css/home.css}" rel="stylesheet" />
   <link th:href="@{/booknest/css/top-nav.css}" rel="stylesheet" />
   <link th:href="@{/booknest/css/users/users.css}" rel="stylesheet" />
@@ -22,7 +22,9 @@
       <ul>
         <li><a th:href="@{/home}">Home</a></li>
         <li><a th:href="@{/books}">Books</a></li>
-        <li><a th:href="@{/users}">Users</a></li>
+        <li sec:authorize="hasAuthority('Admin')">
+          <a th:href="@{/users}">Users</a>
+        </li>
       </ul>
     </div>
 

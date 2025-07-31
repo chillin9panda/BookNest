@@ -19,6 +19,8 @@ public class SecurityConfig {
         .permitAll()
         .requestMatchers("/auth/**", "/favicon.png")
         .permitAll()
+        .requestMatchers("/users")
+        .hasAuthority("Admin")
         .anyRequest()
         .authenticated())
         .formLogin(form -> form

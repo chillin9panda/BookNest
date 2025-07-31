@@ -1,5 +1,7 @@
 package chillin9panda.booknest.service;
 
+import java.util.List;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +62,11 @@ public class UserService {
     response.setMessage("New user added!");
 
     return response;
+  }
+
+  public List<User> getAll() {
+    List<User> users = userRepository.findAll();
+    return users;
   }
 
 }

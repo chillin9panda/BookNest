@@ -1,0 +1,28 @@
+.users-list {
+  padding: 0 20px;
+}
+
+.users-list table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+}
+
+.users-list th,
+.users-list td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+.users-list th {
+  background-color: #222;
+  color: #00b5ed;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.users-list tr:hover {
+  background-color: #2a2a2a;
+}

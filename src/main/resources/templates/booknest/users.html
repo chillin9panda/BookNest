@@ -8,6 +8,8 @@
   <title>BookNest | Home</title>
   <link th:href="@{/booknest/css/home.css}" rel="stylesheet" />
   <link th:href="@{/booknest/css/top-nav.css}" rel="stylesheet" />
+  <link th:href="@{/booknest/css/users/users.css}" rel="stylesheet" />
+  <link th:href="@{/booknest/css/users/user-list.css}" rel="stylesheet" />
 </head>
 
 <body>
@@ -24,26 +26,26 @@
       </ul>
     </div>
 
-    <div class="users-list">
-      <table>
-        <thead>
-          <tr>
-            <th>username</th>
-            <th>Role</th>
-            <th>Joined Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="user : ${users}">
-            <td th:text="${user.username}"></td>
-            <td th:text="${user.role}"></td>
-            <td th:text="${user.joinedDate}"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
     <div class="profile">U</div>
+  </div>
+
+  <div class="users-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Role</th>
+          <th>Joined Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="user : ${users}">
+          <td th:text="${user.username}"></td>
+          <td th:text="${user.role}"></td>
+          <td th:text="${user.joinedDate}"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </body>
 

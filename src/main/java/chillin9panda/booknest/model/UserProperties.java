@@ -20,7 +20,7 @@ public class UserProperties {
     this.isOnline = isOnline;
   }
 
-  public boolean isHasSystemAccess() {
+  public boolean hasSystemAccess() {
     return hasSystemAccess;
   }
 

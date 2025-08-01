@@ -1,5 +1,6 @@
 package chillin9panda.booknest.config;
 
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,13 +24,14 @@ class LoginConfig implements UserDetailsService {
     chillin9panda.booknest.model.User user = userRepository.findByUsername(username)
         .orElseThrow(() -> new UsernameNotFoundException("User not found!"));
 
-    String role = user.getRole().name();
-    System.out.println(role);
+    if (!user.getUserProperties().hasSystemAccess()) {
+      throw new DisabledException("Access Denied: Contact an admin!");
+    }
 
     return User.builder()
         .username(user.getUsername())
         .password(user.getPassword())
-        .authorities(new SimpleGrantedAuthority(role))
+        .authorities(new SimpleGrantedAuthority(user.getRole().name()))
         .build();
 
   }

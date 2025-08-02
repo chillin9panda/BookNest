@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="img/png" th:href="@{/favicon.png}" />
+  <title>BookNest | Books</title>
+  <link th:href="@{/booknest/css/colors.css}" rel="stylesheet" />
+  <link th:href="@{/booknest/css/top-nav.css}" rel="stylesheet" />
+  <link th:href="@{/booknest/css/books/books.css}" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="top-nav">
+    <div class="logo">
+      <img th:src="@{/img/booknest.png}" alt="logo" />
+    </div>
+
+    <div class="links">
+      <ul>
+        <li><a th:href="@{/home}">Home</a></li>
+        <li><a th:href="@{/books}">Books</a></li>
+        <li sec:authorize="hasAuthority('Admin')">
+          <a th:href="@{/users}">Users</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="profile">U</div>
+  </div>
+
+  <div class="books">
+
+  </div>
+
+</body>
+
+</html>

@@ -10,10 +10,12 @@
   <link th:href="@{/booknest/css/common.css}" rel="stylesheet" />
   <link th:href="@{/booknest/css/top-nav.css}" rel="stylesheet" />
   <link th:href="@{/booknest/css/home.css}" rel="stylesheet" />
+  <link th:href="@{/assets/fonts/lucide/lucide.css}" rel="stylesheet" />
 </head>
 
 <body>
   <div class="top-nav">
+
     <div class="logo">
       <img th:src="@{/img/booknest.png}" alt="logo" />
     </div>
@@ -28,8 +30,17 @@
       </ul>
     </div>
 
-    <div class="profile">U</div>
+    <div class="profile-container">
+      <div class="icon-user-round profile" onclick="toggleDropdown()"></div>
+      <div class="dropdown-menu" id="dropdown">
+        <a th:href="@{/profile}"><i class="icon-user-round-pen lucide-icon-common-style"></i>Profile</a>
+        <a th:href="@{/logout}"><i class="icon-log-out lucide-icon-common-style"></i>Logout</a>
+      </div>
+    </div>
+
   </div>
+
+  <script th:src="@{/booknest/js/top-nav.js}"></script>
 </body>
 
 </html>

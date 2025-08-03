@@ -29,7 +29,14 @@
       </ul>
     </div>
 
-    <div class="profile">U</div>
+    <div class="profile-container">
+      <div class="icon-user-round profile" onclick="toggleDropdown()"></div>
+      <div class="dropdown-menu" id="dropdown">
+        <a th:href="@{/profile}"><i class="icon-user-round-pen lucide-icon-common-style"></i>Profile</a>
+        <a th:href="@{/logout}"><i class="icon-log-out lucide-icon-common-style"></i>Logout</a>
+      </div>
+    </div>
+
   </div>
 
   <div class="upload-book-form">
@@ -53,6 +60,7 @@
     </form>
   </div>
 
+  <script th:src="@{/booknest/js/top-nav.js}"></script>
 </body>
 
 </html>

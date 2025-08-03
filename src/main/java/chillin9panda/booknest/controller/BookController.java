@@ -11,4 +11,9 @@ public class BookController {
     return "booknest/books/books";
   }
 
+  @GetMapping("/books/upload-book")
+  public String addBookPage() {
+    return "booknest/books/upload-book";
+  }
+
 }

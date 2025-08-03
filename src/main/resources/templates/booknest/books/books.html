@@ -7,8 +7,10 @@
   <link rel="icon" type="img/png" th:href="@{/favicon.png}" />
   <title>BookNest | Books</title>
   <link th:href="@{/booknest/css/colors.css}" rel="stylesheet" />
+  <link th:href="@{/booknest/css/common.css}" rel="stylesheet" />
   <link th:href="@{/booknest/css/top-nav.css}" rel="stylesheet" />
   <link th:href="@{/booknest/css/books/books.css}" rel="stylesheet" />
+  <link th:href="@{/assets/fonts/lucide/lucide.css}" rel="stylesheet" />
 </head>
 
 <body>
@@ -31,7 +33,10 @@
   </div>
 
   <div class="books">
-
+    <a th:href="@{books/upload-book}" class="primary-btn">
+      <i class="icon-book-plus lucide-icon-custom-style"></i>
+      Upload Book
+    </a>
   </div>
 
 </body>

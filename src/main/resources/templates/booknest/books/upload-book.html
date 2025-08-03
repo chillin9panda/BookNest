@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="img/png" th:href="@{/favicon.png}" />
+  <title>BookNest | Add-Book</title>
+  <link th:href="@{/booknest/css/colors.css}" rel="stylesheet" />
+  <link th:href="@{/booknest/css/common.css}" rel="stylesheet" />
+  <link th:href="@{/booknest/css/top-nav.css}" rel="stylesheet" />
+  <link th:href="@{/booknest/css/books/upload-book.css}" rel="stylesheet" />
+  <link th:href="@{/assets/fonts/lucide/lucide.css}" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="top-nav">
+    <div class="logo">
+      <img th:src="@{/img/booknest.png}" alt="logo" />
+    </div>
+
+    <div class="links">
+      <ul>
+        <li><a th:href="@{/home}">Home</a></li>
+        <li><a th:href="@{/books}">Books</a></li>
+        <li sec:authorize="hasAuthority('Admin')">
+          <a th:href="@{/users}">Users</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="profile">U</div>
+  </div>
+
+  <div class="upload-book-form">
+    <form th:action="@{/} " method="post">
+      <label for="title">Book Title: <i class="required">*</i></label>
+      <input type="text" name="title" placeholder="Enter book title" required />
+
+      <label for="author">Book Author: <i class="required">*</i></label>
+      <input type="text" name="author" placeholder="Enter author name" required />
+
+      <label for="publicationDate">Publication Date: </label>
+      <input type="date" name="publishedDate" placeholder="Enter publication date" />
+
+      <label for="book">Book file(pdf only): <i class="required">*</i></label>
+      <input type="file" name="book" placeholder="Select book file" required />
+
+      <button type="submit" class="primary-btn">
+        <i class="icon-upload lucide-icon-common-style upload-book-icon-style"></i>
+        Upload
+      </button>
+    </form>
+  </div>
+
+</body>
+
+</html>

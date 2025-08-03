@@ -1,0 +1,37 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.upload-book-form {
+  color: var(--default-font-color);
+  border: none;
+  cursor: pointer;
+  max-width: 54rem;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.upload-book-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.upload-book-form input[type="text"],
+.upload-book-form input[type="date"],
+.upload-book-form input[type="file"],
+.upload-book-form .add-btn {
+  padding: 8px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.upload-book-icon-style {
+  font-size: 1rem;
+}
+
+.upload-book-form input:focus {
+  outline: 2px solid var(--light-blue-highlight);
+}

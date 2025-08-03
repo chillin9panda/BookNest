@@ -7,5 +7,8 @@
 
   --default-font-color: #fff;
 
-  --dark-border: #444
+  --dark-border: #444;
+
+  --primary-btn: #00b5ed;
+  --primary-btn-hover: #009ccc;
 }

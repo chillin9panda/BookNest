@@ -1,7 +1,9 @@
 package chillin9panda.booknest.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -67,6 +69,11 @@ public class UserService {
   public List<User> getAll() {
     List<User> users = userRepository.findAll();
     return users;
+  }
+
+  public User getUserByUserName(String username) {
+    return userRepository.findByUsername(username)
+        .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
   }
 
 }

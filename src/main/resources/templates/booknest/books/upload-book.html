@@ -40,7 +40,7 @@
   </div>
 
   <div class="upload-book-form">
-    <form th:action="@{/} " method="post">
+    <form th:action="@{/books/upload-book}" method="post" enctype="multipart/form-data">
       <label for="title">Book Title: <i class="required">*</i></label>
       <input type="text" name="title" placeholder="Enter book title" required />
 
@@ -58,6 +58,16 @@
         Upload
       </button>
     </form>
+
+    <div th:if="${successMessage}">
+      <p th:text="${successMessage}"></p>
+    </div>
+
+
+    <div th:if="${errorMessage}">
+      <p th:text="${errorMessage}"></p>
+    </div>
+
   </div>
 
   <script th:src="@{/booknest/js/top-nav.js}"></script>

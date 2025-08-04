@@ -26,6 +26,9 @@ public class Book {
   @Column(name = "added_at", updatable = false)
   private LocalDateTime addedAt;
 
+  @Column(name = "path_to_file", nullable = false)
+  private String pathToFile;
+
   @ManyToOne(optional = false)
   @JoinColumn(name = "added_by")
   private User addedBy;
@@ -56,6 +59,14 @@ public class Book {
   @PrePersist
   public void onAdd() {
     this.addedAt = LocalDateTime.now();
+  }
+
+  public String getPathToFile() {
+    return pathToFile;
+  }
+
+  public void setPathToFile(String pathToFile) {
+    this.pathToFile = pathToFile;
   }
 
   public User getAddedBy() {

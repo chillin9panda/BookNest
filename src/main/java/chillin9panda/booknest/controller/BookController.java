@@ -1,10 +1,26 @@
 package chillin9panda.booknest.controller;
 
+import java.security.Principal;
+
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import chillin9panda.booknest.dto.request.UploadBookRequest;
+import chillin9panda.booknest.dto.response.CustomResponse;
+import chillin9panda.booknest.service.BookService;
 
 @Controller
 public class BookController {
+
+  private final BookService bookService;
+
+  public BookController(BookService bookService) {
+    this.bookService = bookService;
+  }
 
   @GetMapping("/books")
   public String booksPage() {
@@ -12,8 +28,21 @@ public class BookController {
   }
 
   @GetMapping("/books/upload-book")
-  public String addBookPage() {
+  public String uploadBookPage() {
     return "booknest/books/upload-book";
+  }
+
+  @PostMapping("/books/upload-book")
+  public String uploadBook(@ModelAttribute UploadBookRequest request, RedirectAttributes redirectAttributes,
+      Principal principal) {
+    try {
+      CustomResponse response = bookService.uploadBook(request, principal.getName());
+      redirectAttributes.addFlashAttribute("successMessage", response.getMessage());
+    } catch (IllegalArgumentException | IllegalStateException | UsernameNotFoundException e) {
+      redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+    }
+
+    return "redirect:/books/upload-book";
   }
 
 }

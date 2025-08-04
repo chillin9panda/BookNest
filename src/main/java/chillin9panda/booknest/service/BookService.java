@@ -1,6 +1,7 @@
 package chillin9panda.booknest.service;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,9 +11,10 @@ import chillin9panda.booknest.dto.request.UploadBookRequest;
 import chillin9panda.booknest.dto.response.CustomResponse;
 import chillin9panda.booknest.model.Book;
 import chillin9panda.booknest.model.BookMetadata;
-import chillin9panda.booknest.model.User;
 import chillin9panda.booknest.repository.BookRepository;
 import chillin9panda.files.storage.ProcessUploads;
+import chillin9panda.files.utils.FileOperations;
+import chillin9panda.files.utils.SupportedFileTypes.BookExtension;
 
 @Service
 public class BookService {
@@ -45,6 +47,13 @@ public class BookService {
 
     if (null == bookFile || bookFile.isEmpty()) {
       throw new IllegalArgumentException("Need a book file to upload");
+    }
+
+    String fileExtension = FileOperations.getFileExtention(bookFile);
+    boolean isSupportedExtension = Arrays.stream(BookExtension.values()).map(Enum::name)
+        .anyMatch(fileExtension::equals);
+    if (!isSupportedExtension) {
+      throw new IllegalArgumentException("File type not supported!");
     }
 
     String path = processUploads.uploadBook(bookFile);

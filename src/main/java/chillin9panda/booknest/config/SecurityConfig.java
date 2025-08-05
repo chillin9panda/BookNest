@@ -14,11 +14,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+  public SecurityFilterChain securityFilterChain(HttpSecurity http, AuthFailureHandler authFailureHandler)
+      throws Exception {
     http.authorizeHttpRequests(authz -> authz
         .requestMatchers("/register", "/login", "/user/register")
         .permitAll()
-        .requestMatchers("/auth/**", "/favicon.png")
+        .requestMatchers("/auth/**", "/assets/toast-lib/**", "/favicon.png")
         .permitAll()
         .requestMatchers("/users")
         .hasAuthority("Admin")
@@ -27,6 +28,7 @@ public class SecurityConfig {
         .formLogin(form -> form
             .loginPage("/login")
             .defaultSuccessUrl("/home", true)
+            .failureHandler(authFailureHandler)
             .permitAll())
         .logout(logout -> logout
             .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))

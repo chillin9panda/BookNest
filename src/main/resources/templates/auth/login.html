@@ -7,6 +7,7 @@
   <link rel="icon" type="img/png" th:href="@{/favicon.png}" />
   <title>BookNest | Login</title>
   <link rel="stylesheet" type="text/css" th:href="@{/auth/css/auth.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/assets/toast-lib/toast.css}" />
 </head>
 
 <body>
@@ -26,6 +27,12 @@
     <button type="button">Forgot Password</button>
     <a th:href="@{/register}">register</a>
   </form>
+
+
+  <div class="toast-auto" th:if="${session.error}" th:attr="data-message=${session.error}" data-type="error"
+    data-position="bottom-right" data-theme="dark" data-duration="5000"></div>
+
+  <script th:src="@{/assets/toast-lib/toast.js}"></script>
 </body>
 
 </html>

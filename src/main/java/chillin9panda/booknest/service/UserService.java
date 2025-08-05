@@ -1,7 +1,6 @@
 package chillin9panda.booknest.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -10,8 +9,8 @@ import org.springframework.stereotype.Service;
 import chillin9panda.booknest.dto.request.RegisterUserRequest;
 import chillin9panda.booknest.dto.response.CustomResponse;
 import chillin9panda.booknest.model.User;
-import chillin9panda.booknest.model.UserProperties;
 import chillin9panda.booknest.model.User.Role;
+import chillin9panda.booknest.model.UserProperties;
 import chillin9panda.booknest.repository.UserRepository;
 
 @Service

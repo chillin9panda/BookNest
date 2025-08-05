@@ -26,7 +26,7 @@ public class UserController {
   public String registerUser(@ModelAttribute RegisterUserRequest request, Model model) {
     try {
       CustomResponse response = userService.registerUser(request);
-      model.addAttribute("message", response.getMessage());
+      model.addAttribute("success", response.getMessage());
     } catch (IllegalArgumentException e) {
       model.addAttribute("error", e.getMessage());
     }

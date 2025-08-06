@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class StorageProperties {
   private String rootPath;
   private String booksPath;
+  private String thumbnailsPath;
 
   public String getRootPath() {
     return rootPath;
@@ -24,4 +25,13 @@ public class StorageProperties {
   public void setBooksPath(String booksPath) {
     this.booksPath = booksPath;
   }
+
+  public String getThumbnailsPath() {
+    return thumbnailsPath;
+  }
+
+  public void setThumbnailsPath(String thumbnailsPath) {
+    this.thumbnailsPath = thumbnailsPath;
+  }
+
 }

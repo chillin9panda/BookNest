@@ -1,13 +1,11 @@
 package chillin9panda.booknest.dto.request;
 
-import java.time.LocalDate;
-
 import org.springframework.web.multipart.MultipartFile;
 
 public class UploadBookRequest {
   private String title;
   private String author;
-  private LocalDate publishedDate;
+  private String publishedDate;
   private MultipartFile book;
 
   public String getTitle() {
@@ -26,11 +24,11 @@ public class UploadBookRequest {
     this.author = author;
   }
 
-  public LocalDate getPublishedDate() {
+  public String getPublishedDate() {
     return publishedDate;
   }
 
-  public void setPublishedDate(LocalDate publishedDate) {
+  public void setPublishedDate(String publishedDate) {
     this.publishedDate = publishedDate;
   }
 

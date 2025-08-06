@@ -18,6 +18,7 @@ public class BookNestInitializer {
   public void initDirectories() {
     createDirectory(storageProperties.getRootPath());
     createDirectory(storageProperties.getBooksPath());
+    createDirectory(storageProperties.getThumbnailsPath());
   }
 
   private void createDirectory(String path) {

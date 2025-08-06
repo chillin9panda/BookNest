@@ -1,6 +1,5 @@
 package chillin9panda.booknest.model;
 
-import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
@@ -29,7 +28,7 @@ public class BookMetadata {
   private int pageCount;
 
   @Column(name = "published_date")
-  private LocalDate publishedDate;
+  private String publishedDate;
 
   public String getExternalId() {
     return externalId;
@@ -87,11 +86,11 @@ public class BookMetadata {
     this.pageCount = pageCount;
   }
 
-  public LocalDate getPublishedDate() {
+  public String getPublishedDate() {
     return publishedDate;
   }
 
-  public void setPublishedDate(LocalDate publishedDate) {
+  public void setPublishedDate(String publishedDate) {
     this.publishedDate = publishedDate;
   }
 

@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import chillin9panda.booknest.dto.request.UploadBookRequest;
+import chillin9panda.booknest.dto.response.BookDetailsResponse;
 import chillin9panda.booknest.dto.response.BookOverviewRespose;
 import chillin9panda.booknest.dto.response.CustomResponse;
 import chillin9panda.booknest.model.Book;
@@ -72,6 +73,23 @@ public class BookService {
     } catch (Exception e) {
       return ResponseEntity.internalServerError().build();
     }
+  }
+
+  public BookDetailsResponse bookDetailsResponse(Long bookId) {
+    Book book = bookRepository.findById(bookId)
+        .orElseThrow(() -> new EntityNotFoundException("Book missing!"));
+
+    BookDetailsResponse bookDetails = new BookDetailsResponse();
+    bookDetails.setBookId(book.getBookId());
+    bookDetails.setTitle(book.getTitle());
+    bookDetails.setAuthor(book.getMetadata().getAuthor());
+    bookDetails.setPublicationDate(book.getMetadata().getPublishedDate());
+    bookDetails.setPublisher(book.getMetadata().getPublisher());
+    bookDetails.setDescription(book.getMetadata().getDescription());
+    bookDetails.setPageCount(book.getMetadata().getPageCount());
+    bookDetails.setThumbnailUrl("/books/thumbnail/" + book.getBookId());
+
+    return bookDetails;
   }
 
   @Transactional

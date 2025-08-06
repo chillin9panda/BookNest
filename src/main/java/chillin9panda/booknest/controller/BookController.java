@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import chillin9panda.booknest.dto.request.UploadBookRequest;
+import chillin9panda.booknest.dto.response.BookDetailsResponse;
 import chillin9panda.booknest.dto.response.CustomResponse;
 import chillin9panda.booknest.service.BookService;
 
@@ -55,4 +56,11 @@ public class BookController {
     return "redirect:/books/upload-book";
   }
 
+  @GetMapping("/books/detail/{bookId}")
+  public String bookDetails(@PathVariable Long bookId, Model model) {
+    BookDetailsResponse response = bookService.bookDetailsResponse(bookId);
+    model.addAttribute("bookDetails", response);
+
+    return "/booknest/books/book-details";
+  }
 }

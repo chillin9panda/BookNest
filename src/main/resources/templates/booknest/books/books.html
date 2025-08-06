@@ -36,7 +36,6 @@
         <a th:href="@{/logout}"><i class="icon-log-out lucide-icon-common-style"></i>Logout</a>
       </div>
     </div>
-
   </div>
 
   <div class="books">
@@ -45,6 +44,37 @@
       Upload Book
     </a>
   </div>
+
+  <!-- Book overview cards -->
+  <div class="book-grid">
+    <div th:each="book : ${books}" class="book-card">
+      <div class="thumbnail-wrapper">
+        <img th:src="@{${book.thumbnailUrl}}" alt="thumbnail" class="book-thumbnail"
+          onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.classList.add('show-fallback');" />
+
+        <div class="book-thumbnail book-thumbnail-broken" style="display:none">
+          <div class="thumbnail-fallback-icon">
+            <i class="icon-book"></i>
+          </div>
+        </div>
+
+        <div class="thumbnail-hover-icons">
+          <i class="icon-book-open center-icon"></i>
+          <div class="corner-icons">
+            <i class="icon-heart"></i>
+            <i class="icon-ellipsis-vertical"></i>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="book-info">
+        <h3 th:text="${book.title}"></h3>
+        <p th:text="${book.author}"></p>
+      </div>
+    </div>
+  </div>
+
 
   <script th:src="@{/booknest/js/top-nav.js}"></script>
 </body>

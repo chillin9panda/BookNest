@@ -1,0 +1,138 @@
+:root {
+  --thumbnail-height: 260px;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--default-font-color);
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+  background: transparent;
+  text-align: center;
+}
+
+.thumbnail-wrapper {
+  width: 100%;
+  position: relative;
+  height: var(--thumbnail-height);
+}
+
+.book-thumbnail {
+  width: 100%;
+  height: var(--thumbnail-height);
+  object-fit: cover;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.book-thumbnail:empty,
+.book-thumbnail-broken {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dropdown-bg);
+  height: var(--thumbnail-height);
+  width: 100%;
+  color: var(--faded-white);
+}
+
+.book-thumbnail-broken {
+  display: none;
+}
+
+.show-fallback {
+  display: flex !important;
+}
+
+.thumbnail-fallback-icon {
+  width: 100%;
+  font-size: 4rem;
+}
+
+.book-info {
+  padding: 1rem;
+}
+
+.book-info h3 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--default-font-color);
+}
+
+.book-info p {
+  font-size: 0.9rem;
+  color: var(--faded-white);
+}
+
+.book-card:hover {
+  cursor: pointer;
+}
+
+.book-thumbnail:hover {
+  filter: brightness(0.6);
+}
+
+.book-thumbnail-broken:hover .book-thumbnail-broken {
+  background-color: var(--light-blue-highlight);
+  filter: brightness(1);
+}
+
+.thumbnail-wrapper:hover .thumbnail-hover-icons {
+  display: flex;
+}
+
+.thumbnail-wrapper:hover .book-thumbnail {
+  filter: brightness(0.6);
+  transition: filter 0.2s ease;
+  cursor: pointer;
+}
+
+.book-thumbnail,
+.book-thumbnail-broken {
+  transition: all 0.5s ease;
+}
+
+.thumbnail-hover-icons {
+  position: absolute;
+  inset: 0;
+  display: none;
+  justify-content: right;
+  align-items: flex-end;
+  padding: 0.5rem;
+  pointer-events: none;
+}
+
+.thumbnail-hover-icons i {
+  color: var(--default-font-color);
+  font-size: 2.1rem;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.corner-icons i {
+  font-size: 1.8rem;
+}
+
+.thumbnail-hover-icons .center-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.thumbnail-hover-icons .corner-icons {
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+}

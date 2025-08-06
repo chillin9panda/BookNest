@@ -39,3 +39,19 @@
 .icon-user-round::before {
   content: "\e46d";
 }
+
+.icon-book::before {
+  content: "\e062";
+}
+
+.icon-ellipsis-vertical::before {
+  content: "\e0bb";
+}
+
+.icon-heart::before {
+  content: "\e0f6";
+}
+
+.icon-book-open::before {
+  content: "\e063";
+}

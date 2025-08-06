@@ -11,6 +11,7 @@
   <link th:href="@{/booknest/css/top-nav.css}" rel="stylesheet" />
   <link th:href="@{/booknest/css/books/upload-book.css}" rel="stylesheet" />
   <link th:href="@{/assets/fonts/lucide/lucide.css}" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" th:href="@{/assets/toast-lib/toast.css}" />
 </head>
 
 <body>
@@ -59,18 +60,15 @@
       </button>
     </form>
 
-    <div th:if="${successMessage}">
-      <p th:text="${successMessage}"></p>
-    </div>
-
-
-    <div th:if="${errorMessage}">
-      <p th:text="${errorMessage}"></p>
-    </div>
+    <div class="toast-auto" th:if="${successMessage}" th:attr="data-message=${successMessage}" data-type="success"
+      data-position="bottom-right" data-theme="dark" data-duration="5000"></div>
+    <div class="toast-auto" th:if="${errorMessage}" th:attr="data-message=${errorMessage}" data-type="error"
+      data-position="bottom-right" data-theme="dark" data-duration="5000"></div>
 
   </div>
 
   <script th:src="@{/booknest/js/top-nav.js}"></script>
+  <script th:src="@{/assets/toast-lib/toast.js}"></script>
 </body>
 
 </html>

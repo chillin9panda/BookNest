@@ -63,4 +63,13 @@ public class BookController {
 
     return "/booknest/books/book-details";
   }
+
+  @PostMapping("/books/delete/{bookId}")
+  public String deleteBook(@PathVariable Long bookId, RedirectAttributes redirectAttributes) {
+    CustomResponse response = bookService.deleteBook(bookId);
+    redirectAttributes.addFlashAttribute("successMessage", response.getMessage());
+
+    return "redirect:/books";
+  }
+
 }

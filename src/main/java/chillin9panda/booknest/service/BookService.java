@@ -128,6 +128,18 @@ public class BookService {
     return response;
   }
 
+  public CustomResponse deleteBook(Long bookId) {
+    Book book = bookRepository.findById(bookId)
+        .orElseThrow(() -> new EntityNotFoundException("Book not found!"));
+
+    bookRepository.delete(book);
+
+    CustomResponse response = new CustomResponse();
+    response.setMessage("Book deleted!");
+
+    return response;
+  }
+
   @Transactional
   public void identifyBook(Book book) {
     BookMetadatas bookInfo = PDFMetadataIdentifier.getPDFMetadata(book.getPathToFile());

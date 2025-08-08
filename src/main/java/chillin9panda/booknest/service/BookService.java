@@ -24,6 +24,7 @@ import chillin9panda.booknest.repository.BookRepository;
 import chillin9panda.files.books.BookMetadatas;
 import chillin9panda.files.books.GoogleBooksAPI;
 import chillin9panda.files.books.PDFMetadataIdentifier;
+import chillin9panda.files.storage.Files;
 import chillin9panda.files.storage.ProcessImage;
 import chillin9panda.files.storage.ProcessUploads;
 import chillin9panda.files.utils.FileOperations;
@@ -37,13 +38,15 @@ public class BookService {
   private final ProcessUploads processUploads;
   private final UserService userService;
   private final ProcessImage processImage;
+  private final Files files;
 
   public BookService(ProcessUploads processUploads, BookRepository bookRepository, UserService userService,
-      ProcessImage processImage) {
+      ProcessImage processImage, Files files) {
     this.processUploads = processUploads;
     this.bookRepository = bookRepository;
     this.userService = userService;
     this.processImage = processImage;
+    this.files = files;
   }
 
   public List<BookOverviewRespose> bookOverviews() {
@@ -128,9 +131,13 @@ public class BookService {
     return response;
   }
 
+  @Transactional
   public CustomResponse deleteBook(Long bookId) {
     Book book = bookRepository.findById(bookId)
         .orElseThrow(() -> new EntityNotFoundException("Book not found!"));
+
+    files.deleteFile(book.getMetadata().getCoverImagePath());
+    files.deleteFile(book.getPathToFile());
 
     bookRepository.delete(book);
 
